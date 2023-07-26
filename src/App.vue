@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="content">
+      <h2>Contribution graph</h2>
+
+      <Suspense>
+          <template #default>
+              <ContributionGraph />
+          </template>
+          <template #fallback>
+              <LoadingSpinner />
+          </template>
+      </Suspense>
+  </div>
 </template>
 
-<script>
-import HelloWorld from "./components/HelloWorld.vue";
+<script setup>
 
-export default {
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-};
+import ContributionGraph from "@/components/ContributionGraph.vue";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fff;
+    color: #000;
+    font-family:Arial,sans-serif;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 </style>
